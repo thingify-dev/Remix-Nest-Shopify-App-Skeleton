@@ -1,0 +1,1 @@
+import{f as u,g as r}from"/build/_shared/chunk-S76IU4RT.js";import{c as f,d as o,e as t,f as e,h as i,i as a,l as p}from"/build/_shared/chunk-VO6KIG23.js";o();t();e();a();i();o();t();e();a();i();var n=f(p());function g(){return(0,n.jsx)(r,{title:"New Remix App",children:(0,n.jsx)(u,{children:(0,n.jsx)(u.Section,{children:"login"})})})}export{g as default};

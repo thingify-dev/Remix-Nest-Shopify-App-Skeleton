@@ -1,0 +1,8 @@
+api/prisma/migrations
+api/.env
+api/node_modules
+api/dist
+client/.cache
+client/node_modules
+client/build
+client/.env
