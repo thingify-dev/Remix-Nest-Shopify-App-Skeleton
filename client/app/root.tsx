@@ -7,7 +7,7 @@ import {
   ScrollRestoration,
 } from "@remix-run/react";
 import { Provider, Loading } from '@shopify/app-bridge-react';
-import { useSearchParams } from "@remix-run/react";
+import { useSearchParams, useLoaderData } from "@remix-run/react";
 import { AppProvider } from "@shopify/polaris";
 import type { LinksFunction } from "@remix-run/node"; // or cloudflare/deno
 import shopifyStyles from "@shopify/polaris/build/esm/styles.css";
@@ -25,12 +25,19 @@ export const links: LinksFunction = () => {
   ];
 };
 
+export async function loader() {
+  return {
+    apiKey: process.env.SHOPIFY_API_KEY,
+  }
+}
+
 export default function App() {
   const [searchParams] = useSearchParams();
+  const envVars = useLoaderData<typeof loader>();
 
 
   const config = {
-    apiKey: process.env.SHOPIFY_API_KEY,
+    apiKey: envVars.apiKey,
     host: searchParams.get('host'),
     forceRedirect: true
   };
