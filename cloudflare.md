@@ -42,7 +42,7 @@ Now click "Start migration". Click "confirm" on all prompts then "Migrate tunnel
 ## Public Hostnames
 
 Click on your tunnel name and go to the "Public Hostname" tab. We will be
-creating 2 subdomains here.
+creating 2 subdomains here. (you CAN use a single subdomain with multiple ports, but this template is designed to be broken out so you can scale your API side separately from your client side)
 
 ### API
 
