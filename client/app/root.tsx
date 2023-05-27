@@ -6,15 +6,12 @@ import {
   Scripts,
   ScrollRestoration,
 } from "@remix-run/react";
-import { Provider, Loading } from '@shopify/app-bridge-react';
+import { Provider, Loading } from "@shopify/app-bridge-react";
 import { useSearchParams, useLoaderData } from "@remix-run/react";
 import { AppProvider } from "@shopify/polaris";
 import type { LinksFunction } from "@remix-run/node"; // or cloudflare/deno
 import shopifyStyles from "@shopify/polaris/build/esm/styles.css";
 import enTranslations from "@shopify/polaris/locales/en.json";
-
-import '@shopify/polaris/build/esm/styles.css';
-
 
 export const links: LinksFunction = () => {
   return [
@@ -28,35 +25,35 @@ export const links: LinksFunction = () => {
 export async function loader() {
   return {
     apiKey: process.env.SHOPIFY_API_KEY,
-  }
+  };
 }
 
 export default function App() {
   const [searchParams] = useSearchParams();
   const envVars = useLoaderData<typeof loader>();
 
-
   const config = {
     apiKey: envVars.apiKey,
-    host: searchParams.get('host'),
-    forceRedirect: true
+    host: searchParams.get("host"),
+    forceRedirect: true,
   };
-  console.log('config', config)
 
-  const cspHeader = `frame-ancestors https://${searchParams.get('host')} https://admin.shopify.com`
+  const cspHeader = `frame-ancestors https://${searchParams.get("host")} https://admin.shopify.com`;
 
   return (
     <html lang="en">
       <head>
         <meta charSet="utf-8" />
-        <meta name="viewport" content="width=device-width,initial-scale=1" />
-        <meta httpEquiv="Content-Security-Policy" content={cspHeader} />
+        <meta
+          name="viewport"
+          content="width=device-width,initial-scale=1"
+        />
+        <meta
+          httpEquiv="Content-Security-Policy"
+          content={cspHeader}
+        />
         <Meta />
         <Links />
-        <link
-          rel="stylesheet"
-          href="https://unpkg.com/@shopify/polaris@10.49.1/build/esm/styles.css"
-        />
       </head>
       <body>
         <AppProvider i18n={enTranslations}>
